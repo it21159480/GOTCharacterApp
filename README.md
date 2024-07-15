@@ -111,33 +111,6 @@ Context API is a way to manage state globally, making it easier to share state a
 - **React Native Paper**
 - **Context API**
 
-# Project Folder Structure
-
-Here's an overview of the main project directories:
-
-```
-MyAssignmentApp/
-|-- android/
-|-- ios/
-|-- src/
-| |-- assets/
-| |-- components/
-| | |-- GOT.png
-| | |-- THRO.png
-| |-- screens/
-| | |-- LoginScreen.js
-| | |-- ProfileScreen.js
-| | |-- SignUpScreen.js
-| | |-- WelcomeScreen.js
-| |-- AuthContext.js
-| |-- AppNavigator.js
-| |-- App.tsx
-|-- .gitignore
-|-- package-lock.json
-|-- package.json
-|-- README.md
-
-```
 # Usage
 
 1. **User Registration**
