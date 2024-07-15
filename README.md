@@ -1,72 +1,161 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# GOTCharacterApp
 
-# Getting Started
+GOTCharacterApp is a React Native application providing user authentication with Firebase. The app includes features like user registration, login, profile management, and persistent user sessions. The app uses React Native Paper for UI components, Firebase for authentication, Context API for state management, and the Game of Thrones Character API for displaying characters.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+# Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- User Registration
+- User Login
+- Profile Management
+- Persistent User Sessions
+- Search Functionality
 
-To start Metro, run the following command from the _root_ of your React Native project:
 
-```bash
-# using npm
-npm start
+## Demo
 
-# OR using Yarn
-yarn start
+Check out the video demonstration of the application workflow [here](https://drive.google.com/file/d/1yIIEAaYIkGoGoWdlV1b2bDXPk82F-qkN/view?usp=sharing).
+
+# Installation
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js and npm installed
+- React Native CLI installed
+- Android Studio (for Android) or Xcode (for iOS)
+- Firebase project setup
+
+#### Firebase Setup
+
+1. **Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).**
+2. **Add an Android app to your Firebase project and download the `google-services.json` file.**
+3. **Place the `google-services.json` file in the `android/app` directory.**
+4. **Update the Firebase configuration in `AuthContext.js` with your Firebase project's details.**
+
+```javascript
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    databaseURL: "YOUR_DATABASE_URL",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID",
+};
 ```
+## Project Setup
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd MyAssignmentApp
+   ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+4. **Start the development server**
+    ```bash
+   npx react-native start
+   ```
+6. **Run the App**
+   - For Android:
+      ```bash
+      npx react-native run-android
+      ```
+   - For iOS:
+      ```bash
+      npx react-native run-ios
+      ```
 
-## Step 2: Start your Application
+# API Integration
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+The application fetches character data from the [Game of Thrones Character API](https://thronesapi.com/) and integrates it into the app. This data is then searchable within the app.
 
-### For Android
+## State Management Approach
 
-```bash
-# using npm
-npm run android
+This project uses Context API for state management to efficiently handle the state of authentication and user information across the application.
 
-# OR using Yarn
-yarn android
+### Why Context API?
+
+Context API is a way to manage state globally, making it easier to share state across multiple components without having to pass props down manually at every level.
+
+#### Benefits of Using Context API:
+
+1. **Simplicity**: Provides a simpler and more straightforward way to manage global state compared to Redux.
+2. **Flexibility**: Easy to set up and use for small to medium-sized applications.
+3. **Lightweight**: No additional library needed, reducing the bundle size and complexity.
+
+### How It’s Implemented:
+
+1. **AuthContext**: The context that holds the state and functions related to authentication.
+2. **AuthProvider**: The provider component that wraps the application and provides the context to its children.
+3. **useContext Hook**: Used in functional components to access the context.
+
+# Bonus Features
+
+- **Persistent Storage**
+  - User sessions are maintained using Firebase's authentication state persistence.
+- **Visual Feedback**
+  - The app uses React Native Paper's components for enhanced UI/UX.
+- **Search Functionality**
+  - Allows searching for characters by name, title, or family.
+- **Basic Styling**
+  - Basic styling and theming for a better user experience.
+
+# Technologies Used
+
+- **React Native**
+- **Firebase Authentication**
+- **React Native Paper**
+- **Context API**
+
+# Project Folder Structure
+
+Here's an overview of the main project directories:
+
 ```
+MyAssignmentApp/
+|-- android/
+|-- ios/
+|-- src/
+| |-- assets/
+| |-- components/
+| | |-- GOT.png
+| | |-- THRO.png
+| |-- screens/
+| | |-- LoginScreen.js
+| | |-- ProfileScreen.js
+| | |-- SignUpScreen.js
+| | |-- WelcomeScreen.js
+| |-- AuthContext.js
+| |-- AppNavigator.js
+| |-- App.tsx
+|-- .gitignore
+|-- package-lock.json
+|-- package.json
+|-- README.md
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
 ```
+# Usage
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+1. **User Registration**
+   - Navigate to the Sign Up screen, fill in the required details, and click "Sign Up".
+2. **User Login**
+   - Navigate to the Login screen, enter your credentials, and click "Sign In".
+3. **Profile Management**
+   - View and manage user profile information on the Profile screen.
+4. **Search**
+   - Use the search bar on the Welcome screen to filter characters by name, title, or family.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+# Contributing
 
-## Step 3: Modifying your App
+Contributions are always welcome! Please create a pull request or open an issue to discuss any changes.
 
-Now that you have successfully run the app, let's modify it.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
 # Learn More
 
